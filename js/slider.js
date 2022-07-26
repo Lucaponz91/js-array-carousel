@@ -7,6 +7,10 @@ const slides = [
 	'./img/04.jpg',
 	'./img/05.jpg',
 ]
+// ARRAY IN CUI PUSHI I LI CHE IL CICLO GENERA
+const slideElements = []
+// COSTANTE PER MODIFICARE LO STATO SUCCESSIVAMENTE
+let currentIndex = 0
 // RECUPERO LO SLIDESWRAPPERELEMENT
 
 const slidesWrapperEl = document.querySelector('.slides-wrapper')
@@ -20,7 +24,7 @@ for (i = 0; i < slides.length; i++){
 	// AGGIUNGO LA CLASSE SLIDE ALL' LI
 	li.classList = 'slide'
 	// IMMAGINE DI PARTENZA
-	if (i === 0) {
+	if (i === currentIndex) {
 		li.classList.add('active')
 	}
 	// CREO IMG
@@ -32,12 +36,22 @@ for (i = 0; i < slides.length; i++){
 	console.log(li)
 	// AGGIUNGO LI ALLO SLIDESWRAPPER
 	slidesWrapperEl.append(li)
+	// PUSHO GLI LI CREATI NELL'ARRAY DA ME CREATO
+	slideElements.push(li)
 
 }
 
 // PESCO LA FRECCIA AVANTI DALL'HTML
 const nextArrowElement = document.querySelector('.arrow-next')
 nextArrowElement.addEventListener('click', function () {
+	// TOLGO CLASSE ACTIVE DALLA SLIDE ATTIVA
+	const slideAttiva = slideElements[currentIndex];
+	slideAttiva.classList.remove('active');
+	// AGGIUNGO LA CLASSE ACTIVE ALLA SLIDE SEGUENTE
+	const slideSuccessiva = slideElements[currentIndex + 1];
+	slideSuccessiva.classList.add('active');
+
+	currentIndex++
 
 
 }
