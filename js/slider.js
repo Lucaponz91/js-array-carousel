@@ -50,9 +50,19 @@ nextArrowElement.addEventListener('click', function () {
 	// AGGIUNGO LA CLASSE ACTIVE ALLA SLIDE SEGUENTE
 	const slideSuccessiva = slideElements[currentIndex + 1];
 	slideSuccessiva.classList.add('active');
-
 	currentIndex++
+}
+) 
 
-
+// PESCO LA FRECCIA INDIETRO DALL'HTML
+const prevArrowElement = document.querySelector('.arrow-prev')
+prevArrowElement.addEventListener('click', function () {
+	// TOLGO CLASSE ACTIVE DALLA SLIDE ATTIVA
+	const slideAttiva = slideElements[currentIndex];
+	slideAttiva.classList.remove('active');
+	// AGGIUNGO LA CLASSE ACTIVE ALLA SLIDE PRECEDENTE
+	const slidePrecedente = slideElements[currentIndex - 1];
+	slidePrecedente.classList.add('active');
+	currentIndex--
 }
 ) 
