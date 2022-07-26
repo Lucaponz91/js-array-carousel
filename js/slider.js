@@ -47,11 +47,11 @@ nextArrowElement.addEventListener('click', function () {
 	const slideAttiva = slideElements[currentIndex];
 	// AGGIUNGO IF NON CI SONO PIU' IMMAGINI
 	// TOLGO CLASSE ACTIVE DALLA SLIDE ATTIVA
-	if (currentIndex <= slides.length){
 	slideAttiva.classList.remove('active');
 	// AGGIUNGO LA CLASSE ACTIVE ALLA SLIDE SEGUENTE
 	const slideSuccessiva = slideElements[currentIndex + 1];
-		slideSuccessiva.classList.add('active');
+	slideSuccessiva.classList.add('active');
+	if (slideSuccessiva <= slides.length){
 		currentIndex++
 	} else {
 		currentIndex--
