@@ -7,7 +7,7 @@ const slides = [
 	'./img/04.jpg',
 	'./img/05.jpg',
 ]
-// ARRAY IN CUI PUSHI I LI CHE IL CICLO GENERA
+// ARRAY IN CUI PUSHO I LI CHE IL CICLO GENERA
 const slideElements = []
 // COSTANTE PER MODIFICARE LO STATO SUCCESSIVAMENTE
 let currentIndex = 0
@@ -41,35 +41,42 @@ for (i = 0; i < slides.length; i++){
 
 }
 
-// PESCO LA FRECCIA AVANTI DALL'HTML
-const nextArrowElement = document.querySelector('.arrow-next')
-nextArrowElement.addEventListener('click', function () {
-	const slideAttiva = slideElements[currentIndex];
-	// AGGIUNGO IF NON CI SONO PIU' IMMAGINI
-	// TOLGO CLASSE ACTIVE DALLA SLIDE ATTIVA
-	slideAttiva.classList.remove('active');
-	// AGGIUNGO LA CLASSE ACTIVE ALLA SLIDE SEGUENTE
-	const slideSuccessiva = slideElements[currentIndex + 1];
-	slideSuccessiva.classList.add('active');
-	if (slideSuccessiva <= slides.length){
+// // PESCO LA FRECCIA AVANTI DALL'HTML
+const nextElement = document.querySelector('.arrow-next');
+// AGGIUNGO L'EVENT LISTENER
+// let slideAttiva = slideElements[currentIndex];
+nextElement.addEventListener('click', function () {
+    // TOLGO CLASSE ACTIVE DALLA SLIDE ATTIVA
+    slideElements[currentIndex].classList.remove('active');
+
+    // AGGIUNGO LA CLASSE ACTIVE ALLA SLIDE SEGUENTE
+    // BONUS 1 LOOP
+    if (currentIndex === slideElements.length - 1) {
+        currentIndex = 0;
+		let slideAttiva = slideElements[currentIndex];
+        slideAttiva.classList.add('active');
+    } else {
 		currentIndex++
-	} else {
-		currentIndex--
-	}
+		let slideAttiva = slideElements[currentIndex];
+        slideAttiva.classList.add('active');
+    }
+})
 
-
-}
-) 
 
 // PESCO LA FRECCIA INDIETRO DALL'HTML
 const prevArrowElement = document.querySelector('.arrow-prev')
+// AGGIUNGO L'EVENT LISTENER
 prevArrowElement.addEventListener('click', function () {
-	// TOLGO CLASSE ACTIVE DALLA SLIDE ATTIVA
-	const slideAttiva = slideElements[currentIndex];
-	slideAttiva.classList.remove('active');
-	// AGGIUNGO LA CLASSE ACTIVE ALLA SLIDE PRECEDENTE
-	const slidePrecedente = slideElements[currentIndex - 1];
-	slidePrecedente.classList.add('active');
-	currentIndex--
-}
-) 
+// 	// TOLGO CLASSE ACTIVE DALLA SLIDE ATTIVA
+	slideElements[currentIndex].classList.remove('active');
+	// LOOP
+	if (currentIndex === 0) {
+        currentIndex = slideElements.length - 1;
+		let slideAttiva = slideElements[currentIndex];
+        slideAttiva.classList.add('active');
+    } else {
+		currentIndex--
+		let slideAttiva = slideElements[currentIndex];
+        slideAttiva.classList.add('active');
+    }
+})
